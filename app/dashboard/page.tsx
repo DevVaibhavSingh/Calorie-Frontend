@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { useAuthStore } from "@/lib/store"
 import CalorieSearchForm from "@/components/calorie/calorie-search-form"
 import CalorieResult from "@/components/calorie/calorie-result"
-import SearchHistory from "@/components/calorie/search-history"
+// import SearchHistory from "@/components/calorie/search-history"
 import MealTable from "@/components/calorie/MealTable"
 
 export default function DashboardPage() {

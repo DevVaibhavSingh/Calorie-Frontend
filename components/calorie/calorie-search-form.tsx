@@ -12,6 +12,7 @@ import { Loader2, Search } from "lucide-react"
 import { calorieSearchSchema, type CalorieSearchFormData } from "@/lib/validations"
 import { apiClient } from "@/lib/api"
 import { useCalorieStore } from "@/lib/store"
+import { CalorieData } from "@/lib/types"
 
 export default function CalorieSearchForm() {
   const [error, setError] = useState<string>("")
@@ -35,15 +36,15 @@ export default function CalorieSearchForm() {
 
     try {
       const response = await apiClient.getCalories(data.dishName, data.servings)
-
+      
       if (response.success) {
         // response.data already includes servings and other fields
-        setCurrentResult(response)
+        setCurrentResult(response as CalorieData)
         debugger
-        addToHistory(response)
+        addToHistory(response as CalorieData)
         reset()
       } else {
-        setError(response.message || "Failed to get calorie data")
+        setError("Failed to get calorie data")
       }
     } catch (error) {
       // Optional: Handle network or unexpected errors

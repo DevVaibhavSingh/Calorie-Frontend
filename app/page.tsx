@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Utensils, Search, BarChart3, Shield } from "lucide-react"
+// import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Utensils } from "lucide-react"
 
 export default function HomePage() {
   return (

@@ -33,8 +33,13 @@ export default function RegisterForm() {
     setError("")
 
     try {
-      const response = await apiClient.register(data)
-      setAuth(response.user, response.token)
+      const response = await apiClient.register({
+        email: data.email,
+        password: data.password,
+        first_name: data.first_name,
+        last_name: data.last_name,
+      })
+      setAuth(response.user, response.access_token)
       router.push("/dashboard")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed")

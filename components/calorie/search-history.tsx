@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+// import { Badge } from "@/components/ui/badge"
 import { History, Trash2 } from "lucide-react"
 import { useCalorieStore } from "@/lib/store"
 
@@ -36,13 +36,13 @@ export default function SearchHistory() {
             >
               <div>
                 <div className="font-medium">{item?.dish_name}</div>
-                <div className="text-sm text-muted-foreground">
+                {/* <div className="text-sm text-muted-foreground">
                   {item?.calories} calories
                   {item?.servings && item.servings !== 1 && ` (${item?.servings} servings)`}
                   {item?.servingSize && ` per ${item.servingSize}`}
-                </div>
+                </div> */}
               </div>
-              <Badge variant="secondary">{item?.calories} cal</Badge>
+              {/* <Badge variant="secondary">{item?.calories} cal</Badge> */}
             </div>
           ))}
         </div>

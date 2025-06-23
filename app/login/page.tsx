@@ -8,7 +8,7 @@ export default function LoginPage() {
         <LoginForm />
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            Don't have an account?{" "}
+            Looking for a account?{" "}
             <Link href="/register" className="font-medium text-primary hover:underline">
               Sign up here
             </Link>

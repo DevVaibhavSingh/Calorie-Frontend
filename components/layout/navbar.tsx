@@ -36,8 +36,8 @@ export default function Navbar() {
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
                   <AvatarFallback>
-                    {user.firstName[0]}
-                    {user.lastName[0]}
+                    {user.first_name}
+                    {user.last_name}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -46,7 +46,7 @@ export default function Navbar() {
               <div className="flex items-center justify-start gap-2 p-2">
                 <div className="flex flex-col space-y-1 leading-none">
                   <p className="font-medium">
-                    {user.firstName} {user.lastName}
+                    {user.first_name} {user.last_name}
                   </p>
                   <p className="w-[200px] truncate text-sm text-muted-foreground">{user.email}</p>
                 </div>

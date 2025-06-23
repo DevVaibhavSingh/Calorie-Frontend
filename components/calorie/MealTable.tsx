@@ -4,10 +4,30 @@ import { Dialog } from '@headlessui/react';
 import { Beef, Wheat, Droplets } from 'lucide-react';
 import { Badge } from '@/components/ui/badge'; // Adjust path as needed
 
-export default function MealTable({ meals }) {
-    const [selectedMeal, setSelectedMeal] = useState(null);
+type Meal = {
+    dish_name: string;
+    servings: number;
+    calories_per_serving: number;
+    total_calories: number;
+    source: string;
+    datetime: string;
+    protein?: number;
+    carbs?: number;
+    fat?: number;
+};
 
-    const handleExploreClick = (meal) => {
+interface MealTableProps {
+    meals: Meal[];
+}
+
+export default function MealTable({ meals }: MealTableProps) {
+    const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
+
+    interface HandleExploreClick {
+        (meal: Meal): void;
+    }
+
+    const handleExploreClick: HandleExploreClick = (meal) => {
         setSelectedMeal(meal);
     };
 

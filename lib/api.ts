@@ -1,9 +1,11 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
 
 class ApiClient {
-  private getAuthHeaders() {
+  getAuthHeaders(): Record<string, string> {
     const token = localStorage.getItem("auth_token")
-    return token ? { Authorization: `Bearer ${token}` } : {}
+    return token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
   }
 
   async register(data: RegisterData): Promise<AuthResponse> {
@@ -82,16 +84,17 @@ class ApiClient {
 export const apiClient = new ApiClient()
 
 export interface RegisterData {
-  username: string
   email: string
   password: string
+  first_name: string
+  last_name: string
 }
 
 export interface AuthResponse {
-  token: string
+  access_token: string
   user: {
     id: string
-    username: string
+    first_name: string
     email: string
   }
 }
@@ -103,4 +106,14 @@ export interface LoginData {
 
 export interface CalorieResponse {
   calories: number
+  cache?: boolean
+  success?: boolean
+  dish_name?: string
+  servings?: number
+  calories_per_serving?: number
+  protein?: number
+  carbs?: number
+  fat?: number
+  servingSize?: string
+  total_calories?: number
 }

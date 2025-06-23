@@ -22,9 +22,9 @@ interface CalorieState {
 }
 
 interface mealHistory {
-  mealHistory: null
+  mealHistory: object | null
   isLoading: boolean
-  setMeal: (MealData: any) => void
+  setMeal: (MealData: object) => void
   setLoading: (loading: boolean) => void
   clearHistory: () => void
 }
@@ -54,12 +54,12 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
       setAuth: (user, token) => {
         localStorage.setItem("auth_token", token)
-        set({ user, token, isAuthenticated: true })
+        set({ user, access_token: token, isAuthenticated: true })
       },
       setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
       logout: () => {
         localStorage.removeItem("auth_token")
-        set({ user: null, token: null, isAuthenticated: false })
+        set({ user: null, access_token: null, isAuthenticated: false })
       },
     }),
     {

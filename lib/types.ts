@@ -1,18 +1,19 @@
 export interface User {
   id: string
-  firstName: string
-  lastName: string
+  first_name?: string
+  last_name?: string
   email: string
 }
 
 export interface AuthResponse {
   token: string
   user: User
+  access_token: string
 }
 
 export interface RegisterData {
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   email: string
   password: string
 }
@@ -40,6 +41,7 @@ export interface CalorieData {
 
 export interface CalorieResponse {
   success: boolean
-  data: CalorieData
+  data: CalorieData[]
   message?: string
+  cache?: boolean
 }

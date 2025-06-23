@@ -1,5 +1,5 @@
-const API_BASE_URL = process.env.API_BASE_URL
-
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+console.log("API_BASE_URL:", API_BASE_URL)
 class ApiClient {
   getAuthHeaders(): Record<string, string> {
     const token = localStorage.getItem("auth_token")

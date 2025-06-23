@@ -36,7 +36,9 @@ export default function MealTable({ meals }: MealTableProps) {
     };
 
     return (
+       
         <div className="overflow-x-auto">
+            <div className='text-sm mb-4'>The data in the table below is currently hardcoded. The Track Meal feature (optional) is still in progress. The API endpoints are ready; I just need to integrate them with the frontend.</div>
             <table className="min-w-full table-auto bg-white border border-gray-200 rounded-lg shadow-sm">
                 <thead>
                     <tr className="bg-gray-100 text-gray-700 text-sm">

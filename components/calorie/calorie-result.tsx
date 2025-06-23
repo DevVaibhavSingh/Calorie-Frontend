@@ -86,7 +86,7 @@ export default function CalorieResult() {
           </button>
         </div>
 
-        {/* Modal / Popup */}
+        {/* Modal / Popup **/}
         {isOpen && (
           <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 flex items-center justify-center">
             <div className="fixed inset-0 bg-black opacity-30" aria-hidden="true" />

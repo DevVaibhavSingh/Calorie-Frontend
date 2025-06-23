@@ -56,6 +56,11 @@ export default function LoginForm() {
         <CardTitle>Welcome Back</CardTitle>
         <CardDescription>Sign in to your account to continue</CardDescription>
       </CardHeader>
+      {/* Give username and password */}
+      <div className="text-center text-sm text-muted-foreground mb-4">
+        <p className="mb-2">Username: vaibhavsingh@abc.io </p>
+        <p>Password: 12345678</p>
+      </div>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">

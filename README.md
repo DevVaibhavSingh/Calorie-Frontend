@@ -9,7 +9,7 @@ Follow the steps below to set up the project locally:
 1. Clone the repository to your local machine:
     ```bash
     git clone https://github.com/DevVaibhavSingh/Calorie-Frontend.git
-    cd meal-calorie-frontend-{your-name}
+    cd Calorie-Frontend
     ```
 
 2. Install the required dependencies:

@@ -20,7 +20,7 @@ export default function CalorieResult() {
             Calorie Information
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 mb-8">
           Results will be displayed here after searching for a dish.
           <span className="text-6xl text-gray-400 text-center block mt-8 mb-10 opacity-40">
             🥘

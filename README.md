@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meal Calorie Tracker - Frontend
 
-## Getting Started
+This is the frontend application for the Meal Calorie Tracker project. It allows users to search for dish calories, track their nutrition, and manage their meals in a user-friendly interface.
 
-First, run the development server:
+## Setup Instructions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Follow the steps below to set up the project locally:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/DevVaibhavSingh/Calorie-Frontend.git
+    cd meal-calorie-frontend-{your-name}
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Install the required dependencies:
+    ```bash
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set up environment variables:
+    - Create a `.env` file by copying `.env.example`:
+        ```bash
+        cp .env.example .env
+        ```
+    - Update `.env` with your own API base URL if needed.
 
-## Learn More
+4. Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+   This will start the application on `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open the browser and visit `http://localhost:3000` to view the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What can be imporved furher / Decisions
+- **Optimized Folder Structure**: Adding the code directly to page.tsx under app directory is not a best practice. Given more time, we can create a views directory and prepare our pages using different components there and then import them in page.tsx for other directories.
 
-## Deploy on Vercel
+- **Route Interceptor**: Checking whether a user is authorized on Dashboard page is again not a good practice and rather I would have preffered to create a route interceptor to check whether a user is logged in or not to guard routes. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Dark Mode Implementation**: I decided to use a `darkMode` state stored in `localStorage` to persist the theme preference across sessions. This allows the user to maintain their theme preference even after refreshing the page.
+  
+- **User Authentication**: For the user authentication system, I am making use of a `useAuthStore` hook to handle authentication state globally.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **API Integration**: The app communicates with a backend API that provides meal data and user information. The base URL for the API is configurable through the `.env` file.
+
+
+## Hosted Link
+
+The application is deployed and can be accessed at the following link:  
+[Meal Calorie Tracker - Live Demo](https://calorie-calculator-git-main-realvaibhavsingh-gmailcoms-projects.vercel.app/)

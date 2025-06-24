@@ -53,14 +53,14 @@ export default function MealTable({ meals }: MealTableProps) {
                 </thead>
                 <tbody>
                     {meals.map((meal, idx) => (
-                        <tr key={idx} className="border-t border-gray-200 text-sm">
-                            <td className="px-4 py-2">{meal.dish_name}</td>
-                            <td className="px-4 py-2">{meal.servings}</td>
-                            <td className="px-4 py-2">{meal.calories_per_serving} cal</td>
-                            <td className="px-4 py-2">{meal.total_calories} cal</td>
-                            <td className="px-4 py-2">{meal.source}</td>
-                            <td className="px-4 py-2">{meal.datetime}</td>
-                            <td className="px-4 py-2">
+                        <tr key={idx} className="border-t border-gray-100 text-sm dark:bg-black ">
+                            <td className="px-4 py-2 dark:text-white">{meal.dish_name}</td>
+                            <td className="px-4 py-2 dark:text-white">{meal.servings}</td>
+                            <td className="px-4 py-2 dark:text-white">{meal.calories_per_serving} cal</td>
+                            <td className="px-4 py-2 dark:text-white">{meal.total_calories} cal</td>
+                            <td className="px-4 py-2 dark:text-white">{meal.source}</td>
+                            <td className="px-4 py-2 dark:text-white">{meal.datetime}</td>
+                            <td className="px-4 py-2 dark:text-white">
                                 <button
                                     onClick={() => handleExploreClick(meal)}
                                     className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded text-sm"

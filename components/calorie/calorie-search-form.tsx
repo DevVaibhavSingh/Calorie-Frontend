@@ -123,7 +123,7 @@ export default function CalorieSearchForm() {
             <AlertDescription className="text-sm text-red-600">{error}</AlertDescription>
           )}
 
-          <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700" disabled={isLoading}>
+          <Button type="submit" className="w-full bg-orange-600 dark:text-white dark:bg-orange-500 hover:bg-orange-700" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Get Calorie Information
           </Button>

@@ -30,8 +30,25 @@ class ApiClient {
         data
       )
       return response.data
-    } catch (error: any) {
-      throw new Error(error.response?.data?.message || "Registration failed")
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || "Registration failed")
+      }
+      throw new Error("Registration failed")
+    }
+  }
+
+  async me(): Promise<AuthResponse> {
+    try {
+      const response: AxiosResponse<AuthResponse> = await this.axiosInstance.get(
+        "/auth/me", { headers: this.getAuthHeaders() }
+      )
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || "Failed to fetch user data")
+      }
+      throw new Error("Failed to fetch user data")
     }
   }
 
@@ -43,8 +60,11 @@ class ApiClient {
         data
       )
       return response.data
-    } catch (error: any) {
-      throw new Error(error.response?.data?.message || "Login failed")
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || "Login failed")
+      }
+      throw new Error("Login failed")
     }
   }
 
@@ -54,14 +74,17 @@ class ApiClient {
       const response: AxiosResponse<CalorieResponse> = await this.axiosInstance.post(
         "/get-calories",
         { dish_name: dishName, servings: servings },
-        { 
+        {
           headers: this.getAuthHeaders(),
           withCredentials: true
         }
       )
       return response.data
-    } catch (error: any) {
-      throw new Error(error.response?.data?.message || "Failed to get calorie data")
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || "Failed to get calorie data")
+      }
+      throw new Error("Failed to get calorie data")
     }
   }
 
@@ -73,8 +96,11 @@ class ApiClient {
         { headers: this.getAuthHeaders() }
       )
       return response.data
-    } catch (error: any) {
-      throw new Error(error.response?.data?.message || "Failed to fetch meal history")
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.message || "Failed to fetch meal history")
+      }
+      throw new Error("Failed to fetch meal history")
     }
   }
 }
@@ -114,4 +140,5 @@ export interface CalorieResponse {
   fat?: number
   servingSize?: string
   total_calories?: number
+  matched_dish_name?: string
 }

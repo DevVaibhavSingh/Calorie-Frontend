@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react"
 import { registerSchema, type RegisterFormData } from "@/lib/validations"
 import { apiClient } from "@/lib/api"
 import { useAuthStore } from "@/lib/store"
+import { toast } from "sonner" // Import Sonner's toast
 
 export default function RegisterForm() {
   const [error, setError] = useState<string>("")
@@ -40,7 +41,15 @@ export default function RegisterForm() {
         last_name: data.last_name,
       })
       setAuth(response.user, response.access_token)
-      router.push("/dashboard")
+      toast.success("Registered Successfully. Login to Continue", {
+        position: "top-center", // Customize the position
+        duration: 3000, // Optional: Set how long the toast should stay visible
+        style: {
+          backgroundColor: "green", // Custom green background for success
+          color: "white", // Ensure text is readable
+        },
+      })
+      router.push("/login")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed")
     } finally {

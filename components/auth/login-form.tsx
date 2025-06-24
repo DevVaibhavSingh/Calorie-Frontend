@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react"
 import { loginSchema, type LoginFormData } from "@/lib/validations"
 import { apiClient } from "@/lib/api"
 import { useAuthStore } from "@/lib/store"
+import { toast } from "sonner" // Import Sonner's toast
 
 export default function LoginForm() {
   const [error, setError] = useState<string>("")
@@ -39,6 +40,14 @@ export default function LoginForm() {
       setAuth(response.user, response.access_token)
       if(response.user) {
         setIsAuthenticated(true);
+        toast.success("Logged in Successfully", {
+          position: "top-center", // Customize the position
+          duration: 3000, // Optional: Set how long the toast should stay visible
+          style: {
+            backgroundColor: "green", // Custom green background for success
+            color: "white", // Ensure text is readable
+          },
+        })
         // Set Token in Cookie
       }
       console.log(useAuthStore.getState().isAuthenticated);

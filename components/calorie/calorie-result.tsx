@@ -45,7 +45,7 @@ export default function CalorieResult() {
           {/* Dish header */}
           <div className="relative mb-3">
             <h3 className="text-lg font-bold text-gray-800">
-              Dish: <span className="text-orange-600 ml-1">{currentResult.dish_name}</span>
+              Matched Dish: <span className="text-orange-600 truncate">{currentResult.matched_dish_name}</span>
             </h3>
             <button
               className="absolute top-0 right-0 bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium py-1 px-3 rounded"
@@ -53,6 +53,7 @@ export default function CalorieResult() {
               Track Meal
             </button>
           </div>
+
 
           {/* Basic Info */}
           <p className="text-base text-gray-700 mb-0">
@@ -73,7 +74,7 @@ export default function CalorieResult() {
           <p className="text-base text-gray-700 mb-3">
             <span className="font-medium text-gray-600">Total Calories:</span>
             <span className="text-orange-600 font-semibold">
-              {currentResult.calories_per_serving} × {currentResult.servings} = {currentResult.total_calories}
+              {currentResult.calories_per_serving} × {currentResult.servings} = {currentResult.total_calories} calories
             </span>
           </p>
 

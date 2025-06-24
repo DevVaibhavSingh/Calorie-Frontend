@@ -29,6 +29,7 @@ export interface CalorieRequest {
 }
 
 export interface CalorieData {
+  matched_dish_name: string
   dish_name: string
   servings: number
   calories_per_serving: number
@@ -40,6 +41,7 @@ export interface CalorieData {
 }
 
 export interface CalorieResponse {
+  matched_dish_name: string
   success: boolean
   data: CalorieData[]
   message?: string

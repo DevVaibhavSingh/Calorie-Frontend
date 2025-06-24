@@ -7,22 +7,23 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { AlertDescription } from "@/components/ui/alert"
 import { Loader2, Search } from "lucide-react"
 import { calorieSearchSchema, type CalorieSearchFormData } from "@/lib/validations"
 import { apiClient } from "@/lib/api"
 import { useCalorieStore } from "@/lib/store"
 import { CalorieData } from "@/lib/types"
+import { toast } from "sonner" // Import Sonner's toast
 
 export default function CalorieSearchForm() {
   const [error, setError] = useState<string>("")
   const { isLoading, setLoading, setCurrentResult, addToHistory } = useCalorieStore()
 
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<CalorieSearchFormData>({
     resolver: zodResolver(calorieSearchSchema),
     defaultValues: {
@@ -34,22 +35,49 @@ export default function CalorieSearchForm() {
     setLoading(true)
     setError("")
 
+
     try {
       const response = await apiClient.getCalories(data.dishName, data.servings)
-      
+
       if (response.success) {
         // response.data already includes servings and other fields
         setCurrentResult(response as CalorieData)
-        debugger
         addToHistory(response as CalorieData)
-        reset()
+        // setSuccess("Calories data retrieved successfully!")
+        // Trigger success toast
+        toast.success("Calories data retrieved successfully!", {
+          position: "top-center", // Customize the position
+          duration: 3000, // Optional: Set how long the toast should stay visible
+          style: {
+            backgroundColor: "green", // Custom green background for success
+            color: "white", // Ensure text is readable
+          },
+        })
+        // Success toast
       } else {
         setError("Failed to get calorie data")
+        // Trigger error toast
+        toast.error("Failed to get calorie data", {
+          position: "top-center", // Customize the position
+          duration: 4000, // Optional: Set how long the toast should stay visible
+          style: {
+            backgroundColor: "red", // Custom red background for error
+            color: "white", // Ensure text is readable
+          },
+        })
       }
     } catch (error) {
-      // Optional: Handle network or unexpected errors
       setError("An error occurred while fetching calorie data")
       console.error(error)
+      // Trigger error toast
+      toast.error("Failed to get calorie data", {
+        position: "top-center", // Customize the position
+        duration: 4000, // Optional: Set how long the toast should stay visible
+        style: {
+          backgroundColor: "red", // Custom red background for error
+          color: "white", // Ensure text is readable
+        },
+      })
     } finally {
       setLoading(false)
     }
@@ -92,9 +120,7 @@ export default function CalorieSearchForm() {
           </div>
 
           {error && (
-            <Alert variant="destructive">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
+            <AlertDescription className="text-sm text-red-600">{error}</AlertDescription>
           )}
 
           <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700" disabled={isLoading}>

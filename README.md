@@ -34,9 +34,9 @@ Follow the steps below to set up the project locally:
 5. Open the browser and visit `http://localhost:3000` to view the app.
 
 ## What can be imporved furher / Decisions
-- **Optimized Folder Structure**: Adding the code directly to page.tsx under app directory is not a best practice. Given more time, we can create a views directory and prepare our pages using different components there and then import them in page.tsx for other directories.
+- **Optimized Folder Structure**:Placing all the code directly in page.tsx within the app directory is not considered a best practice. With more time, we could refactor the project by creating a separate views directory, organizing our pages using distinct components, and then importing those components into page.tsx from other directories.
 
-- **Route Interceptor**: Checking whether a user is authorized on Dashboard page is again not a good practice and rather I would have preffered to create a route interceptor to check whether a user is logged in or not to guard routes. 
+- **Route Interceptor**: Checking user authorization directly on the Dashboard page is not an ideal approach. Instead, I would have preferred to implement a route interceptor to verify whether a user is logged in, which would help secure the routes more effectively. 
 
 - **Dark Mode Implementation**: I decided to use a `darkMode` state stored in `localStorage` to persist the theme preference across sessions. This allows the user to maintain their theme preference even after refreshing the page.
   
